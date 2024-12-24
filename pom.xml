@@ -20,29 +20,34 @@
 	<build>
 		<plugins>
 					<plugin>
-				<groupId>org.mule.tools.maven</groupId>
-				<artifactId>mule-maven-plugin</artifactId>
-				<version>${mule.maven.plugin.version}</version>
-				<extensions>true</extensions>
-				<configuration>
-				    <cloudHubDeployment>
-				      <uri>https://anypoint.mulesoft.com</uri>
-				      <muleVersion>${deployment.app.runtime}</muleVersion>
-				      <username>${anypoint.username}</username>
-				      <password>${anypoint.password}</password>
-				      <applicationName>${project.artifactId}</applicationName>
-				      <environment>${env}</environment>
-				      <region>${deployment.region}</region>
-				      <workers>${deployment.workers}</workers>
-				      <workerType>${deployment.workerType}</workerType>
-				      <objectStoreV2>true</objectStoreV2>
-				      <properties>
-				        <http.port>${http.port}</http.port>
-				        <mule.env>${env}</mule.env>
-				      </properties>
-				    </cloudHubDeployment>
-				  </configuration>
-			</plugin>
+  <groupId>org.mule.tools.maven</groupId>
+  <artifactId>mule-maven-plugin</artifactId>
+  <version>3.7.1</version>
+  <extensions>true</extensions>
+  <configuration>
+    <cloudhub2Deployment>
+      <uri>https://anypoint.mulesoft.com</uri>
+      <provider>MC</provider>
+      <environment>${environment}</environment>
+      <target>${targetName}</target>
+      <muleVersion>${muleVersion}</muleVersion>
+      <username>${user}</username>
+      <password>${pass}</password>
+      <applicationName>${appName}</applicationName>
+      <replicas>1</replicas>
+      <vCores>1</vCores>
+      <deploymentSettings>
+        <http>
+          <inbound>
+            <publicUrl>${publicURL}</publicUrl>
+            <forwardSslSession>true</forwardSslSession>
+            <lastMileSecurity>true</lastMileSecurity>
+          </inbound>
+        </http>
+      </deploymentSettings>
+    </cloudhub2Deployment>
+  </configuration>
+</plugin>
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
